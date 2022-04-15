@@ -1,0 +1,31 @@
+# Compile of adder_tree.sv was successful.
+# Compile of adder_tree_TB.sv was successful.
+# Compile of CL_TB.sv was successful.
+# Compile of correlation_cell.sv was successful.
+# Compile of correlation_cell_testbench.sv was successful.
+# Compile of correlation_line.sv was successful.
+# Compile of Line_sum_Accumulator.sv was successful.
+# Compile of LSA_TB.sv was successful.
+# Compile of template_datapath.sv was successful.
+# Compile of template_datapath_TB.sv was successful.
+# Compile of Parameters.svh was successful.
+# 11 compiles, 0 failed with no errors.
+vsim work.adder_tree_TB
+# vsim work.adder_tree_TB 
+# Start time: 15:26:04 on Apr 15,2022
+# Loading sv_std.std
+# Loading work.adder_tree_TB
+# Loading work.adder_tree
+add wave  \
+sim:/adder_tree_TB/CLK \
+sim:/adder_tree_TB/I_in_line \
+sim:/adder_tree_TB/line_sum_out
+# Load canceled
+run
+# Compile of adder_tree.sv was successful.
+# Compile of adder_tree.sv was successful.
+run
+# ** Note: $finish    : C:/Users/User/project A/project-A/adder_tree_TB.sv(24)
+#    Time: 150 ps  Iteration: 0  Instance: /adder_tree_TB
+# End time: 15:29:04 on Apr 15,2022, Elapsed time: 0:03:00
+# Errors: 0, Warnings: 0
