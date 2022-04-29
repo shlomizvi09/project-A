@@ -9,6 +9,7 @@ module correlation_cell_testbench #() ();
 	`include "Parameters.svh"
 	logic [PIXEL_SIZE-1:0] I;
 	logic [PIXEL_SIZE-1:0] T [NUM_TEMPLATES];
+	logic [PIXEL_SIZE-1:0] I_out;
 	logic [2*PIXEL_SIZE-1:0] I_square_out;
 	logic [2*PIXEL_SIZE-1:0] T_x_I_out [NUM_TEMPLATES];
 	logic CLK;
@@ -31,6 +32,6 @@ begin
 	
 	
 end
-correlation_cell correlation_cell_test(.CLK(CLK), .I(I), .T(T), .I_square_out(I_square_out), .T_x_I_out(T_x_I_out));
+correlation_cell correlation_cell_test(.CLK(CLK), .I(I), .T(T), .I_out(I_out), .I_square_out(I_square_out), .T_x_I_out(T_x_I_out));
 
 endmodule

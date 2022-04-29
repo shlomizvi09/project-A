@@ -23,8 +23,9 @@ module LSA_L_TB #() ();
 		CLK = 0;
 		reset = 0;
 		count = 10;
+		#30;
 		for (int i = 0; i<count ; i++) begin
-			if (i==4) begin
+			if (i==2) begin
 				reset<=1;
 				#1
 			    reset<=0;
@@ -45,7 +46,6 @@ module LSA_L_TB #() ();
 		
 		
 	end
-	Line_Sum_Accumulators_Line Line_sum_Accumulators_test(.CLK(CLK), .reset(reset), .I_square_out_line_sum(I_square_out_line_sum), .I_out_line_sum(I_out_line_sum), .T_x_I_out_lines_sum(T_x_I_out_lines_sum),
-															.Acc_lines_sum_I_square(Acc_lines_sum_I_square) ,.Acc_lines_sum_I(Acc_lines_sum_I), .Acc_lines_sum_T_x_I_out_lines_sum(Acc_lines_sum_T_x_I_out_lines_sum));
+	Line_Sum_Accumulators_Line Line_sum_Accumulators_test(.CLK(CLK), .reset(reset), .I_square_out_line_sum(I_square_out_line_sum), .I_out_line_sum(I_out_line_sum), .T_x_I_out_lines_sum(T_x_I_out_lines_sum),.Acc_lines_sum_I_square(Acc_lines_sum_I_square) ,.Acc_lines_sum_I(Acc_lines_sum_I), .Acc_lines_sum_T_x_I_out_lines_sum(Acc_lines_sum_T_x_I_out_lines_sum));
 
 	endmodule

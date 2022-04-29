@@ -14,7 +14,9 @@ module Line_sum_Accumulator #() (CLK, reset, line_sum, Acc_lines_sum);
 			temp__line_sum <= 0;
 		end
 		else begin
-			temp__line_sum <= temp__line_sum + line_sum;
+			if(!$isunknown(line_sum)) begin
+				temp__line_sum <= temp__line_sum + line_sum;
+			end
 		end
 	end
 	

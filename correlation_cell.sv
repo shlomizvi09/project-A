@@ -11,7 +11,7 @@ module correlation_cell #() (CLK, I, T,I_out, I_square_out, T_x_I_out);
 	input CLK;
 	input [PIXEL_SIZE-1:0] I;
 	input [PIXEL_SIZE-1:0] T [NUM_TEMPLATES];
-	output [PIXEL_SIZE-1:0] I_out;
+	output [2*PIXEL_SIZE-1:0] I_out;
 	output [2*PIXEL_SIZE-1:0] I_square_out;
 	output [2*PIXEL_SIZE-1:0] T_x_I_out [NUM_TEMPLATES];
 	

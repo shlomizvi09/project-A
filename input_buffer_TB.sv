@@ -1,0 +1,38 @@
+/*------------------------------------------------------------------------------
+ * File          : input_buffer_TB.sv
+ * Project       : RTL
+ * Author        : epabsz
+ * Creation date : Dec 22, 2021
+ * Description   :
+ *------------------------------------------------------------------------------*/
+
+module input_buffer_TB #() ();
+	`include "Parameters.svh"
+	logic CLK;
+	logic [PIXEL_SIZE-1:0] I_in_line[LINE_SIZE];
+	logic [PIXEL_SIZE-1:0] T_in_line[LINE_SIZE][NUM_TEMPLATES];
+	logic [PIXEL_SIZE-1:0] I_out_line[LINE_SIZE];
+	logic [PIXEL_SIZE-1:0] T_out_line[LINE_SIZE][NUM_TEMPLATES];
+	
+	initial begin
+		CLK = 0;	
+		for (int i = 0; i<10;i++) begin
+			for (int j = 0; j<LINE_SIZE; j++) begin
+				I_in_line[j] <= $urandom_range(0,255);
+				for (int k = 0; k<NUM_TEMPLATES; k++) begin
+					T_in_line[j][k] <= $urandom_range(0,255);
+				end
+			end
+			#6;				
+		end
+		#100 $finish;
+		
+	end
+	always
+	begin
+		#3 CLK = ~CLK;
+		
+	end
+	input_buffer u0(.CLK(CLK), .I_in_line(I_in_line), .T_in_line(T_in_line), .I_out_line(I_out_line), .T_out_line(T_out_line));
+
+endmodule

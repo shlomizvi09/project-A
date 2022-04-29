@@ -5,13 +5,10 @@
  * Creation date : Jan 23, 2022
  * Description   :
  *------------------------------------------------------------------------------*/
-parameter PIXEL_SIZE = 8;
-parameter NUM_TEMPLATES = 2;
-parameter LINE_SIZE = 5;
-parameter NUM_OF_LINES = 5;
 
 module template_datapath #() (CLK, I_in_line, T_in_line, I_square_out_line_sum,
 								I_out_line_sum, T_x_I_out_lines_sum);
+	`include "Parameters.svh"
 	input CLK;
 	input [PIXEL_SIZE-1:0] I_in_line[LINE_SIZE];
 	input [PIXEL_SIZE-1:0] T_in_line[LINE_SIZE][NUM_TEMPLATES];
