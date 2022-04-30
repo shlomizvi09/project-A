@@ -24,7 +24,7 @@ module Top_TB #() ();
 		CLK = 0;	
 		reset = 0;
 		CLK_counter = 0;
-		for (int i = 0; i<10;i++) begin
+		for (int i = 0; i<100;i++) begin
 			for (int j = 0; j<LINE_SIZE; j++) begin
 				I_in_line[j] <= $urandom_range(0,255);
 				for (int k = 0; k<NUM_TEMPLATES; k++) begin
@@ -41,7 +41,7 @@ module Top_TB #() ();
 		#3 CLK = ~CLK;
 	end
 	
-	always @(posedge CLK) begin
+	always @(negedge CLK) begin
 		if((CLK_counter-3) % 5 == 0) begin
 			reset = 1;
 			#1;
