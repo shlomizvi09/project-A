@@ -41,13 +41,13 @@ module Top_TB #() ();
 		#3 CLK = ~CLK;
 	end
 	
-	always @(posedge CLK) begin
+	/*always @(posedge CLK) begin
 		if((CLK_counter-3) % 5 == 0) begin
 			reset = 1;
 			#1;
 			reset = 0;
 		end
-	end
+	end*/
 	
 	
 	Top u0(.CLK(CLK),.reset(reset), .I_in_line(I_in_line), .T_in_line(T_in_line),

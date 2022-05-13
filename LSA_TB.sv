@@ -17,17 +17,17 @@ module LSA_TB #() ();
 		CLK = 0;
 		reset = 0;
 		
-		for (int i = 0; i<NUM_OF_LINES ; i++) begin
+		for (int i = 0; i<3 * NUM_OF_LINES ; i++) begin
 			line_sum <= $urandom_range(0,255);
-			if (i==4) begin
-				reset<=1;
-				#1
-			    reset<=0;
-			end
+			//if (i==4) begin
+			//	reset<=1;
+			//	#1
+			 //   reset<=0;
+			//end
 			#20;
 			
 		end
-		#100 $finish;
+		#400 $finish;
 	end
 	always
 	begin
