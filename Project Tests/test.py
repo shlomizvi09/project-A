@@ -1,6 +1,5 @@
 import numpy as np
 import time
-import read_image
 
 ROI = np.array([[152, 233, 214, 233, 175, 229, 138, 134, 105, 205, 153, 9, 9,
                  143, 163, 151, 125, 69, 3, 253],
@@ -73,10 +72,10 @@ def calc(ROI, template_1, template_2):
 
 
 def final_calc(I, I_square, I_X_T1, I_X_T2):
-    ans_t1 = np.zeros((8, 14))
-    ans_t2 = np.zeros((8, 14))
-    for row in range(8):
-        for col in range(14):
+    ans_t1 = np.zeros((ROI_ROW_SIZE - TEMPLATE_ROW_SIZE + 1, ROI_COL_SIZE - TEMPLATE_COL_SIZE + 1))
+    ans_t2 = np.zeros((ROI_ROW_SIZE - TEMPLATE_ROW_SIZE + 1, ROI_COL_SIZE - TEMPLATE_COL_SIZE + 1))
+    for row in range(ROI_ROW_SIZE - TEMPLATE_ROW_SIZE + 1):
+        for col in range(ROI_COL_SIZE - TEMPLATE_COL_SIZE + 1):
             ans_t1[row, col] = (N * I_X_T1[row, col] - B_1 * I[row, col]) / (
                         D_1 * np.sqrt(N * I_square[row, col] - I[row, col] ** 2))
             ans_t2[row, col] = (N * I_X_T2[row, col] - B_2 * I[row, col]) / (
