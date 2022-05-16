@@ -2,13 +2,13 @@ import numpy as np
 from PIL import Image, ImageDraw
 import read_image
 
-ROI, template = read_image.get_image_and_template('Dogs gray scale.jpg', 'template.jpg')
+ROI, template = read_image.get_image_and_template('Dogs gray scale.jpg', 'template 3.jpg')
 
-# add random noise to the template, between -25 and 25
-with np.nditer(template, op_flags=['readwrite']) as it:
-    for x in it:
-        temp = np.random.randint(-25, 25)
-        x[...] = (x + temp) % 255 # so we will not go pass 0 and 255 for pixel
+# # add random noise to the template, between -25 and 25
+# with np.nditer(template, op_flags=['readwrite']) as it:
+#     for x in it:
+#         temp = np.random.randint(-25, 25)
+#         x[...] = (x + temp) % 255 # so we will not go pass 0 and 255 for pixel
 
 TEMPLATE_ROW_SIZE, TEMPLATE_COL_SIZE = template.shape
 ROI_ROW_SIZE, ROI_COL_SIZE = ROI.shape
