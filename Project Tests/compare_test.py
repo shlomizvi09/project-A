@@ -1,4 +1,3 @@
-from asyncio import threads
 import numpy as np
 from PIL import Image, ImageDraw
 import read_image

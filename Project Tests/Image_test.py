@@ -1,3 +1,5 @@
+import time
+
 import numpy as np
 from PIL import Image, ImageDraw
 import read_image
@@ -48,12 +50,15 @@ def calc_result_matrix(I, I_square, I_X_T1):
     return ans_t1
 
 if __name__ == "__main__":
-
     # formula_values will contain [C, E, A] mentioned in the article's formula
+    start_time = time.time()
     formula_values = calc_formula_values(ROI, template)
+    print(f"Calc formula values took: {time.time() - start_time} Seconds")
 
     #result matrix is R(x,y) for each template, in this case only 1 template
+    start_time = time.time()
     result_matrix = calc_result_matrix(formula_values[0], formula_values[1], formula_values[2])
+    print(f"calc result matrix values took: {time.time() - start_time} Seconds")
 
     # index of maximum value in R(x,y) flattened
     max_index = np.argmax(result_matrix)
