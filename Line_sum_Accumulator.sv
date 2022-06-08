@@ -16,12 +16,12 @@ module Line_sum_Accumulator #() (CLK, reset, line_sum, Acc_lines_sum);
 			counter <= 0;
 		end
 		else begin
-			if(!$isunknown(line_sum)) begin
+			if(line_sum != "X") begin
 				temp__line_sum <= temp__line_sum + line_sum;
 				if (counter == 0) begin
 					temp__line_sum <= line_sum;
 				end
-				counter = (counter + 1) % NUM_OF_LINES;
+				counter <= (counter + 1) % NUM_OF_LINES;
 			end
 		end
 	end
