@@ -53,7 +53,7 @@ if __name__ == "__main__":
     # formula_values will contain [C, E, A] mentioned in the article's formula
     start_time = time.time()
     formula_values = calc_formula_values(ROI, template)
-    print(f"Calc formula values took: {time.time() - start_time} Seconds")
+    print(f"calc formula values took: {time.time() - start_time} seconds")
 
     #result matrix is R(x,y) for each template, in this case only 1 template
     start_time = time.time()
