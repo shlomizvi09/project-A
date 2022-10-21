@@ -41,13 +41,13 @@ def calc_formula_values(ROI, template):
     return I, I_square, I_X_T1
 
 def calc_result_matrix(I, I_square, I_X_T1):
-    ans_t1 = np.zeros((ROW_ITERATION_SIZE, COL_ITERATION_SIZE))
+    result_matrix = np.zeros((ROW_ITERATION_SIZE, COL_ITERATION_SIZE))
     for row in range(ROW_ITERATION_SIZE):
         for col in range(COL_ITERATION_SIZE):
-            ans_t1[row, col] = (N * I_X_T1[row, col] - B_1 * I[row, col]) / (
+            result_matrix[row, col] = (N * I_X_T1[row, col] - B_1 * I[row, col]) / (
                         D_1 * np.sqrt(abs(N * I_square[row, col] - I[row, col] ** 2)))
 
-    return ans_t1
+    return result_matrix
 
 if __name__ == "__main__":
     # formula_values will contain [C, E, A] mentioned in the article's formula

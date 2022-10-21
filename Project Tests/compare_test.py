@@ -51,7 +51,9 @@ def calc_formula_values(ROI, template):
                     for col in range(image_window.shape[1]):
                         I_input.write(f"{image_window[row, col]}\n")
                         T_input.write(f"{template[row, col]}\n")
-                result_output.write(f"{i_sum} {i_square_sum} {i_x_t1_sum}")
+                result_output.write(f"A = {i_x_t1_sum}\n")
+                result_output.write(f"C = {i_sum}\n")
+                result_output.write(f"E = {i_square_sum}\n")
                 I_input.close()
                 T_input.close()
                 result_output.close()
