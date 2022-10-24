@@ -1,16 +1,14 @@
 import time
+from matplotlib import projections
 
 import numpy as np
 from PIL import Image, ImageDraw
 import read_image
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
-ROI, template = read_image.get_image_and_template('Dogs gray scale.jpg', 'template 3.jpg')
-
-# # add random noise to the template, between -25 and 25
-# with np.nditer(template, op_flags=['readwrite']) as it:
-#     for x in it:
-#         temp = np.random.randint(-25, 25)
-#         x[...] = (x + temp) % 255 # so we will not go pass 0 and 255 for pixel
+# possible templates: template.jpg, template 2.jpg, template 3.jpg. need to change the input name for different simulation
+ROI, template = read_image.get_image_and_template('Dogs gray scale.jpg', 'template 2.jpg', add_noise=True)
 
 TEMPLATE_ROW_SIZE, TEMPLATE_COL_SIZE = template.shape
 ROI_ROW_SIZE, ROI_COL_SIZE = ROI.shape
@@ -60,6 +58,12 @@ if __name__ == "__main__":
     result_matrix = calc_result_matrix(formula_values[0], formula_values[1], formula_values[2])
     print(f"calc result matrix values took: {time.time() - start_time} Seconds")
 
+    h, w = result_matrix.shape
+    plt.figure(figsize=(16, 8))
+    ax = plt.axes(projection='3d')
+    X, Y = np.meshgrid(np.arange(w), np.arange(h))
+    ax.plot_surface(X, Y, result_matrix, rstride=1, cstride=1, cmap='Blues', edgecolor='none', antialiased=False)
+    plt.show()
     # index of maximum value in R(x,y) flattened
     max_index = np.argmax(result_matrix)
 
@@ -73,5 +77,6 @@ if __name__ == "__main__":
     with Image.open('Dogs gray scale.jpg') as im:
         draw=ImageDraw.Draw(im)
         draw.rectangle([max_col,max_row,max_col+TEMPLATE_COL_SIZE, max_row+TEMPLATE_ROW_SIZE])
+        im.save("result.jpg")
         im.show()
         im.close()
